@@ -137,4 +137,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR)+'static'
+
+LOGIN_URL = '/account/login/'
+LOGIN_REDIRECT_URL = '/chat/'
+
 django_heroku.settings(locals())
