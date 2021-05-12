@@ -1,2 +1,2 @@
-web: hypercorn setup:app -b 0.0.0.0:$PORT
+web: daphne setup:app --port $PORT --bind 0.0.0.0 -v2
 worker: python manage.py runserver
