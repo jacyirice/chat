@@ -7,5 +7,4 @@ urlpatterns = [
     path('create/', views.GroupCreate.as_view(), name='create-room'),
     path('enter/', views.GroupEnterView.as_view(), name='enter-room'),
     path('<str:room_name>/', views.room, name='room'),
-    
 ]

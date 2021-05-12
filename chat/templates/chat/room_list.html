@@ -4,16 +4,16 @@
 {% block content %}
     <div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
         <div class="card-header" style="">
-            <h5>Grupos recentes
-                <a href="{% url 'enter-room' %}" style="decorators:none">
-                    <span style="float:right">></span>
-                </a>
-                | |
-                <a href="{% url 'create-room' %}" style="decorators:none">
-                    <span style="float:right">+</span>
-                </a>
-                
-            </h5>
+            <h5>Grupos recentes</h5>
+            <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+            <div class="action_menu">
+                <ul>
+                    <a href="{% url 'user-update' %}"><li><i class="fas fa-user-circle"></i>Perfil</li></a>
+                    <a href="{% url 'create-room' %}"><li><i class="fas fa-plus"></i> Criar grupo </li></a>
+                    <a href="{% url 'enter-room' %}"><li><i class="fas fa-users"></i> Entrar em um grupo </li></a>
+                    <a href="/accounts/social/logout"><li><i class="fas fa-ban"></i> Sair </li></a>
+                </ul>
+            </div>
             
         </div>
         <div class="card-body contacts_body">
@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="user_info">
                                     <span>{{g.group}}</span>
-                                    <p>{{g.group.messages.first.user}}: {{g.group.messages.last}}</p>
+                                    <p>{{g.group.messages.last.user.first_name}}: {{g.group.messages.last}}</p>
                                 </div>
                             </div>
                         </a>
@@ -37,4 +37,13 @@
         </div>
         <div class="card-footer"></div>
     </div>
+{% endblock %}
+{% block script %}
+	<script>
+        $(document).ready(function(){
+            $('#action_menu_btn').click(function(){
+                $('.action_menu').toggle();
+            });
+        });
+    </script>
 {% endblock %}

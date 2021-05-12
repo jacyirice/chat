@@ -36,7 +36,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'channels',
-    'chat.apps.ChatConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +48,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'storages',
+    'account_chat',
+    'chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE = [
@@ -104,6 +105,7 @@ DATABASES = {
     # }
 }
 
+# AUTH_USER_MODEL = 'account_chat.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
