@@ -104,6 +104,7 @@ old
 # Environments
 .vscode
 .vs
+media
 .env
 .venv
 env/
