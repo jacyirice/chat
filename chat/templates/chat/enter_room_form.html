@@ -1,0 +1,23 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %} Criar grupo {% endblock %}
+{% block content %}
+    <div class="col-md-4 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
+        <div class="card-header" style="text-align:center">
+            <h5>Entrar em grupo</h5>
+        </div>
+        <div class="card-body">
+            <form action="." method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group form-label-group">
+                        <label class="mylabel">{{ field.label }}</label>
+                        {{ field }}
+                        {{field.errors}}
+                    </div>
+                {% endfor %}
+                <input type="submit"  class="btn btn-outline-primary btn-lg btn-block" value="Adicionar">
+            </form>
+        </div>
+    </div>
+{% endblock %}

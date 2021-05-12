@@ -4,9 +4,17 @@
 {% block content %}
     <div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
         <div class="card-header" style="">
-        <center>
-            <h5>Grupos recentes</h5>
-        </center>
+            <h5>Grupos recentes
+                <a href="{% url 'enter-room' %}" style="decorators:none">
+                    <span style="float:right">></span>
+                </a>
+                | |
+                <a href="{% url 'create-room' %}" style="decorators:none">
+                    <span style="float:right">+</span>
+                </a>
+                
+            </h5>
+            
         </div>
         <div class="card-body contacts_body">
             <ui class="contacts">
@@ -15,7 +23,7 @@
                         <a href="{% url 'room' g.group.pk %}">
                             <div class="d-flex bd-highlight">
                                 <div class="img_cont">
-                                    <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">
+                                    <img src={{g.group.image.url}} class="rounded-circle user_img">
                                 </div>
                                 <div class="user_info">
                                     <span>{{g.group}}</span>
