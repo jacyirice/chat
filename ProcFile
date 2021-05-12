@@ -1,2 +1,2 @@
-web: gunicorn setup:app -k uvicorn.workers.UvicornWorker
+web: hypercorn setup:app -b 0.0.0.0:$PORT
 worker: python manage.py runserver
