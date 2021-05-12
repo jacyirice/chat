@@ -8,7 +8,7 @@ from .models import Group
 @database_sync_to_async
 def get_group(group_id, user):
     try:
-        return Group.objects.get(id=group_id, groupuser__user=user)
+        return Group.objects.get(id=group_id, members__user=user)
     except Group.DoesNotExist:
         return None
 

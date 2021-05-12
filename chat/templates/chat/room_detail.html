@@ -1,4 +1,5 @@
 {% extends './base.html' %}
+{% load static %}
 {% block title %}{{group.title}}{% endblock %}
 {% block content %}
     <div class="col-md-8 col-xl-6 chat">
@@ -53,13 +54,15 @@
         </div>
     </div>
     {{ room_name|json_script:"room-name" }}
+    <script src="{% static 'js/reconnecting-websocket.min.js' %}"></script>
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
         
         go_to_end();
 
-        const chatSocket = new WebSocket(
-            'wss://'
+        const ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+        const chatSocket = new ReconnectingWebSocket(
+            ws_scheme + '://'
             + window.location.host
             + '/ws/chat/'
             + roomName
