@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "".join(random.choice(string.printable) for i in range(40)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", False)
+DEBUG = os.environ.get("DEBUG", True)
 
 ALLOWED_HOSTS = []
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -140,8 +141,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-MEDIA_ROOT = str(BASE_DIR)+'/media/'
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = str(BASE_DIR)+'/media/'
+# MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR)+'/static/'
@@ -167,4 +168,8 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DROPBOX_OAUTH2_TOKEN = os.environ.get('DROPBOX_ACCESS_TOKEN')
+DROPBOX_ROOT_PATH = 'django_chat_heroku'
 django_heroku.settings(locals())
