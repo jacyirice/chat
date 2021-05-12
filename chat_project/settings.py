@@ -152,6 +152,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
