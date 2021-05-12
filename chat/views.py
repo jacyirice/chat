@@ -18,7 +18,7 @@ def index(request):
 
 @login_required
 def room(request, room_name):
-	group = get_object_or_404(Group, pk=room_name)
+	group = get_object_or_404(Group, pk=room_name, members__user=request.user)
 	return render(request, 'chat/room_detail.html', {
 		'group': group,
 		'room_name': group.pk
