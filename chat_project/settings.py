@@ -171,5 +171,5 @@ SOCIALACCOUNT_PROVIDERS = {
 
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DROPBOX_OAUTH2_TOKEN = os.environ.get('DROPBOX_ACCESS_TOKEN')
-DROPBOX_ROOT_PATH = 'django_chat_heroku'
+DROPBOX_ROOT_PATH = '/Aplicativos/django_chat_heroku'
 django_heroku.settings(locals())
